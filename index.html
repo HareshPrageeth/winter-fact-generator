@@ -1,59 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Winter Fact Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Facts</title>
   <style>
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-      text-align: center;
-    }
+/* CSS Styles */
+#winter-facts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
 
-    h1 {
-      margin-bottom: 20px;
-    }
+#winter-facts p {
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center; 
+}
 
-    p {
-      margin-top: 20px;
-    }
+#generate-fact {
+  display: block;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  border: none;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: auto; /* Adds left margin automatically */
+  margin-right: auto; /* Adds right margin automatically */
+}
   </style>
 </head>
 <body>
-
-  <h1>Winter Fact Generator</h1>
-  <p id="fact"></p>
-  <button onclick="generateFact()">Generate Fact</button>
-
+  <h1 style="text-align: center">Winter Facts</h1> 
+  <div id="winter-facts">
+    <!-- Facts will be displayed here -->
+  </div>
+  <button id="generate-fact">Generate a Fact</button>
   <script>
-    const winterFacts = [
-      { "fact": "Winter is one of the four seasons of the year." },
-      { "fact": "It is characterized by cold temperatures and often by snowfall." },
-      { "fact": "The official start of winter in the Northern Hemisphere is the winter solstice, usually around December 21st." },
-      { "fact": "In the Southern Hemisphere, winter begins around June 21st." },
-      { "fact": "During winter, days are shorter and nights are longer." },
-      { "fact": "Many animals hibernate during the winter months." },
-      { "fact": "Some animals migrate to warmer climates for the winter." },
-      { "fact": "Snowflakes are unique, with no two exactly alike." },
-      { "fact": "Ice is less dense than liquid water, which is why it floats." },
-      { "fact": "Winter sports are popular during this season, such as skiing, snowboarding, and ice skating." },
-      { "fact": "The winter solstice is the shortest day of the year." },
-      { "fact": "Many cultures celebrate festivals during the winter season, such as Christmas and Hanukkah." },
-      { "fact": "Winter can bring challenges like icy roads and power outages." },
-      { "fact": "People often wear warm clothing, such as coats, hats, and gloves, during the winter." },
-      { "fact": "Some plants become dormant during the winter." },
-      { "fact": "The Earth is tilted on its axis, which causes the seasons, including winter." },
-      { "fact": "Winter can be a beautiful time of year, with snow-covered landscapes." },
-      { "fact": "The coldest temperature ever recorded on Earth was in Antarctica." },
-      { "fact": "Many people enjoy the cozy atmosphere of winter evenings." },
-      { "fact": "Winter can be a time for reflection and introspection." }
-    ];
-
-    function generateFact() {
-      const randomIndex = Math.floor(Math.random() * winterFacts.length);
-      const factElement = document.getElementById('fact');
-      factElement.textContent = winterFacts[randomIndex].fact;
+/* JavaScript from script.js */
+const facts = {
+  "facts_about_winter": [
+    {
+      "text": "The Earth is tilted on its axis, which creates the seasons. When the Northern Hemisphere is tilted away from the sun, it experiences winter."
+    },
+    {
+      "text": "During winter, days are shorter and nights are longer due to the angle of the Earth's tilt."
+    },
+    {
+      "text": "Winter is typically the coldest season of the year, with temperatures often dropping below freezing."
+    },
+    {
+      "text": "Snowfall is common in many parts of the world during winter, creating a beautiful blanket of white."
+    },
+    {
+      "text": "Some animals hibernate during winter to conserve energy and avoid the harsh conditions."
+    },
+    {
+      "text": "Many winter holidays and festivals are celebrated around the world, including Christmas, Hanukkah, and Kwanzaa."
+    },
+    {
+      "text": "Winter sports such as skiing, snowboarding, and ice skating are popular activities in many countries."
+    },
+    {
+      "text": "Winter is often associated with feelings of warmth, comfort, and togetherness."
+    },
+    {
+      "text": "The winter solstice, the shortest day of the year, occurs in December."
+    },
+    {
+      "text": "Many winter traditions involve gathering with loved ones, sharing meals, and exchanging gifts."
+    },
+    {
+      "text": "The first snowflake was observed by a microscope in 1611."
+    },
+    {
+      "text": "The coldest temperature ever recorded on Earth was -89.2°C (-128.6°F) in Antarctica."
+    },
+    {
+      "text": "The world's largest snowflake on record was 15 inches wide and 8 inches thick."
+    },
+    {
+      "text": "Winter weather can cause significant disruptions to daily life, including school closures and travel delays."
+    },
+    {
+      "text": "Meteorologists use a variety of tools to forecast winter weather, including satellites, radar, and computer models."
+    },
+    {
+      "text": "Winter has a significant impact on agriculture, with many crops unable to grow in cold temperatures."
+    },
+    {
+      "text": "Winter can cause damage to infrastructure and property due to heavy snowfall and freezing temperatures."
+    },
+    {
+      "text": "Winter storms can be dangerous, bringing high winds, ice, and heavy snow."
+    },
+    {
+      "text": "Many animals adapt to winter in various ways, including growing thicker fur and changing their diet."
+    },
+    {
+      "text": "Climate change is affecting winter patterns around the world, with some areas experiencing milder winters and others experiencing more extreme conditions."
     }
-  </script>
+  ]
+};
 
+const generateFactButton = document.getElementById('generate-fact');
+const winterFactsContainer = document.getElementById('winter-facts');
+
+generateFactButton.addEventListener('click', () => {
+  const randomFactIndex = Math.floor(Math.random() * facts.facts_about_winter.length);
+  const selectedFact = facts.facts_about_winter[randomFactIndex];
+
+  winterFactsContainer.innerHTML = '';
+
+  const article = document.createElement('div');
+  article.innerHTML = `
+    <p>${selectedFact.text}</p>`;
+  winterFactsContainer.appendChild(article);
+});
+  </script>
 </body>
 </html>
