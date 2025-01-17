@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Winter Fact Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Winter Fact Generator</h1>
+  <p id="fact"></p>
+  <button onclick="generateFact()">Generate Fact</button>
+
+  <script>
+    const winterFacts = [
+      { "fact": "Winter is one of the four seasons of the year." },
+      { "fact": "It is characterized by cold temperatures and often by snowfall." },
+      { "fact": "The official start of winter in the Northern Hemisphere is the winter solstice, usually around December 21st." },
+      { "fact": "In the Southern Hemisphere, winter begins around June 21st." },
+      { "fact": "During winter, days are shorter and nights are longer." },
+      { "fact": "Many animals hibernate during the winter months." },
+      { "fact": "Some animals migrate to warmer climates for the winter." },
+      { "fact": "Snowflakes are unique, with no two exactly alike." },
+      { "fact": "Ice is less dense than liquid water, which is why it floats." },
+      { "fact": "Winter sports are popular during this season, such as skiing, snowboarding, and ice skating." },
+      { "fact": "The winter solstice is the shortest day of the year." },
+      { "fact": "Many cultures celebrate festivals during the winter season, such as Christmas and Hanukkah." },
+      { "fact": "Winter can bring challenges like icy roads and power outages." },
+      { "fact": "People often wear warm clothing, such as coats, hats, and gloves, during the winter." },
+      { "fact": "Some plants become dormant during the winter." },
+      { "fact": "The Earth is tilted on its axis, which causes the seasons, including winter." },
+      { "fact": "Winter can be a beautiful time of year, with snow-covered landscapes." },
+      { "fact": "The coldest temperature ever recorded on Earth was in Antarctica." },
+      { "fact": "Many people enjoy the cozy atmosphere of winter evenings." },
+      { "fact": "Winter can be a time for reflection and introspection." }
+    ];
+
+    function generateFact() {
+      const randomIndex = Math.floor(Math.random() * winterFacts.length);
+      const factElement = document.getElementById('fact');
+      factElement.textContent = winterFacts[randomIndex].fact;
+    }
+  </script>
+
+</body>
+</html>
